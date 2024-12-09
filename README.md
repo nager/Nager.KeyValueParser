@@ -3,7 +3,7 @@
 Nager.KeyValueParser is a lightweight and efficient library for parsing key-value pairs from strings. Its flexible design supports various delimiters and provides an easy-to-use API.
 
 ## Features
-- Support for custom delimiters (e.g., ;, =, etc.)
+- Support for custom delimiters
 - High performance with low memory usage
 - Easy integration into .NET projects
 
