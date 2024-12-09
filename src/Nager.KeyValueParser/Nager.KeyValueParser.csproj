@@ -6,7 +6,6 @@
     <Description>Key Value Parser</Description>
 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 
     <ImplicitUsings>enable</ImplicitUsings>
 	  
