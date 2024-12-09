@@ -41,5 +41,14 @@ else
 }
 ```
 
+## Benchmark
+
+| Method                            | Job        | Toolchain                | IterationCount | LaunchCount | WarmupCount | Mean     | Error   | StdDev  | Gen0   | Gen1   | Allocated |
+|---------------------------------- |----------- |------------------------- |--------------- |------------ |------------ |---------:|--------:|--------:|-------:|-------:|----------:|
+| TestMemoryEfficientKeyValueParser | DefaultJob | Default                  | Default        | Default     | Default     | 179.6 ns | 1.72 ns | 1.61 ns | 0.0801 | 0.0002 |    1008 B |
+| TestStringSplitKeyValueParser     | DefaultJob | Default                  | Default        | Default     | Default     | 232.7 ns | 3.29 ns | 3.08 ns | 0.1116 | 0.0005 |    1400 B |
+| TestMemoryEfficientKeyValueParser | MediumRun  | InProcessNoEmitToolchain | 15             | 2           | 10          | 190.2 ns | 2.54 ns | 3.73 ns | 0.0801 | 0.0002 |    1008 B |
+| TestStringSplitKeyValueParser     | MediumRun  | InProcessNoEmitToolchain | 15             | 2           | 10          | 240.0 ns | 1.52 ns | 2.23 ns | 0.1116 | 0.0005 |    1400 B |
+
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
