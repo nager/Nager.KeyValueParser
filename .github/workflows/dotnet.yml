@@ -33,3 +33,11 @@ jobs:
     - name: Test
       working-directory: ./src
       run: dotnet test --no-build --verbosity normal
+    - name: Build project and generate NuGet package
+      run: |
+        dotnet pack --configuration Release --output $GITHUB_WORKSPACE/out src/Nager.KeyValueParser/Nager.KeyValueParser.csproj
+    - name: Push NuGet package
+      if: github.event_name != 'pull_request'
+      run: |
+        cd $GITHUB_WORKSPACE/out
+        dotnet nuget push *.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{secrets.NUGET_TOKEN}} --skip-duplicate
