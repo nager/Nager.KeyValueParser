@@ -8,7 +8,6 @@ updates:
       prefix: chore
       prefix-development: chore(dev)
     labels:
-      - "dependencies"
       - "enhancement"
     open-pull-requests-limit: 20
 
@@ -19,7 +18,6 @@ updates:
     commit-message:
       prefix: chore
     labels:
-      - "dependencies"
       - "enhancement"
     # Allow up to 5 open pull requests for nuget dependencies
     open-pull-requests-limit: 20
