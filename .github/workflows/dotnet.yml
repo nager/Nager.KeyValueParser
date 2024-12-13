@@ -9,12 +9,10 @@ on:
   pull_request:
     paths:
     - 'src/**'
-    - '.github/workflows/**'
     branches: [ main ]
 
 permissions:
   pull-requests: write
-  contents: write
 
 jobs:
   build:
@@ -69,7 +67,7 @@ jobs:
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v2
       - name: Enable auto-merge for Dependabot PRs
-        if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch' || steps.dependabot-metadata.outputs.package-ecosystem == 'github_actions'}}
+        if: ${{steps.dependabot-metadata.outputs.update-type == 'version-update:semver-patch'}}
         run: gh pr merge --auto --merge "$PR_URL"
         env:
           PR_URL: ${{github.event.pull_request.html_url}}
