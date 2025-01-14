@@ -52,6 +52,12 @@
                 }
 
                 var keyValueSeparatorIndex = value.IndexOf(_keyValueSeparator);
+                if (keyValueSeparatorIndex == -1)
+                {
+                    unrecognizedParts.Add(value.ToString());
+                    break;
+                }
+
                 var key = value[..keyValueSeparatorIndex];
                 var dataStartIndex = keyValueSeparatorIndex + 1;
 
