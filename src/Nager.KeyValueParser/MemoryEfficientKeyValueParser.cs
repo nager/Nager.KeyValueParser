@@ -54,25 +54,23 @@
                 var keyValueSeparatorIndex = value.IndexOf(_keyValueSeparator);
                 if (keyValueSeparatorIndex == -1)
                 {
+                    // A part without a separator does not end the parsing, the parts after it are still parsed
                     unrecognizedParts.Add(value.ToString());
-                    break;
+                }
+                else
+                {
+                    keyValues.Add(new IndexedKeyValueItem
+                    {
+                        Index = index,
+                        Key = value[..keyValueSeparatorIndex].ToString(),
+                        Value = value[(keyValueSeparatorIndex + 1)..].ToString()
+                    });
                 }
 
-                var key = value[..keyValueSeparatorIndex];
-                var dataStartIndex = keyValueSeparatorIndex + 1;
-
-                if (dataStartIndex > value.Length)
+                if (nextIndexOfDelimiter == -1)
                 {
-                    //failure...
                     break;
                 }
-
-                keyValues.Add(new IndexedKeyValueItem
-                {
-                    Index = index,
-                    Key = key.ToString(),
-                    Value = value[dataStartIndex..].ToString()
-                });
 
                 inputSpan = inputSpan[(nextIndexOfDelimiter + 1)..];
                 if (inputSpan.IsEmpty)
